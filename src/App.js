@@ -6,8 +6,6 @@ import UserList from "./components/UserList/UserList";
 function App(props) {
   const [userInfos, setUserInfos] = useState([]);
 
-  let userInfoListContent = "";
-
   const addUserInfoHandler = (formEnteredUserInfo) => {
     setUserInfos((prevUserInfos) => {
       const updatedUserInfos = [...prevUserInfos];
@@ -16,20 +14,18 @@ function App(props) {
         age: formEnteredUserInfo.age,
         id: Math.random().toString(),
       });
-
       return updatedUserInfos;
     });
   };
-
-  if (userInfos.length > 0)
-    userInfoListContent = <UserList items={userInfos} />;
 
   return (
     <div>
       <section id="addUser-form">
         <AddUser onAddUserInfo={addUserInfoHandler} />
       </section>
-      <section id="users-list">{userInfoListContent}</section>
+      <section id="users-list">
+        {userInfos.length > 0 && <UserList items={userInfos} />}
+      </section>
     </div>
   );
 }

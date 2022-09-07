@@ -3,9 +3,8 @@ import React from "react";
 import styles from "./ErrorModal.module.css";
 
 const ErrorModal = (props) => {
-  const closeErrorModal = (event) => {
-    event.preventDefault();
-    props.onCloseErrorModal(true);
+  const closeErrorModal = () => {
+    props.onCloseErrorModal(false);
   };
 
   return (
